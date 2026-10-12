@@ -132,17 +132,6 @@ The package has a `requirements-lock.txt` with the versions exercised during pac
 ### 4A. Use MongoDB Atlas
 
 Create a cluster, create a **database user** with read/write access to `hunting_for_happiness`, and allow your current IP in Atlas Network Access. Copy the Drivers connection string. Set these in `.env`:
-
-```dotenv
-STORAGE_MODE=mongo
-MONGODB_URI=mongodb+srv://YOUR_DB_USER:URL_ENCODED_PASSWORD@YOUR_CLUSTER.mongodb.net/?retryWrites=true&w=majority
-MONGODB_DB=hunting_for_happiness
-OLLAMA_URL=http://127.0.0.1:11434
-GEMMA_MODEL=gemma3:4b
-STORE_REFLECTIONS=false
-ENABLE_VOICE=false
-```
-
 Use the database user's credentials, not your Atlas website login. URL-encode special characters in the username/password. Keep `.env` out of Git; `.gitignore` already excludes it. TLS defaults for `mongodb+srv` are retained; do not disable certificate validation.
 
 The collection is `players`. MongoDB's built-in unique `_id` index identifies each profile. This small demo deliberately embeds its bounded history in one document for atomic updates. It allows at most 500 successful quests per profile; export before deleting/resetting a full profile. There is no search/embedding index.
