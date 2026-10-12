@@ -1,0 +1,15 @@
+# Build an inference image with the model preloaded. Review its license before redistributing.
+FROM ollama/ollama:latest
+ARG GEMMA_MODEL=gemma3:4b
+ENV OLLAMA_HOST=0.0.0.0:11434
+ENV OLLAMA_MODELS=/models
+RUN ollama serve & server=$!; attempts=0; \
+    until ollama list >/dev/null 2>&1; do \
+      attempts=$((attempts+1)); \
+      if [ "$attempts" -ge 30 ]; then kill "$server" 2>/dev/null || true; exit 1; fi; \
+      sleep 1; \
+    done; \
+    ollama pull "$GEMMA_MODEL"; result=$?; kill "$server"; exit "$result"
+EXPOSE 11434
+ENTRYPOINT ["ollama"]
+CMD ["serve"]

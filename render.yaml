@@ -1,0 +1,22 @@
+# App service. Create the private Ollama service separately using deploy/Dockerfile.ollama.
+services:
+  - type: web
+    name: hunting-for-happiness
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /healthz
+    envVars:
+      - key: STORAGE_MODE
+        value: mongo
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB
+        value: hunting_for_happiness
+      - key: OLLAMA_URL
+        sync: false
+      - key: GEMMA_MODEL
+        value: gemma3:4b
+      - key: STORE_REFLECTIONS
+        value: "false"
+      - key: ENABLE_VOICE
+        value: "false"

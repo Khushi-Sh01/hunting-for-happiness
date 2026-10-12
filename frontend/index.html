@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#19382b"><meta name="description" content="A small outdoor mission. A little more attention. A lot less screen.">
+  <title>#HuntingForHappiness</title>
+  <link rel="stylesheet" href="/style.css"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header id="header"><a href="/" class="brand">hunting for happiness<span>FIELD NOTES / VOL. 01</span></a><span class="mark" aria-hidden="true">✳</span></header>
+  <div id="status" role="status" aria-live="polite"></div>
+  <section id="home">
+    <div class="eyebrow">LESS FEED. MORE FIELD.</div>
+    <h1>Your next good moment<br>is probably <em>outside.</em></h1>
+    <p class="lead">Pick how you feel. Take one small mission.<br>Then put your phone away.</p>
+    <form id="questForm" class="card">
+      <div class="fields">
+        <label>How's your headspace?<select id="mood"><option value="restless">Restless</option><option value="low_energy">Low energy</option><option value="overwhelmed">Overwhelmed</option><option value="curious">Curious</option></select></label>
+        <label>Make a little room<select id="minutes"><option value="5">5 minutes</option><option value="10">10 minutes</option><option value="15">15 minutes</option></select></label>
+        <label>Your pace<select id="mobility"><option value="walking">A gentle walk</option><option value="seated">Observe from a seated spot</option></select></label>
+      </div>
+      <button id="generate" type="submit">Find my outdoor mission <span aria-hidden="true">↗</span></button>
+      <p class="small">No GPS. No photo proof. No leaderboard. Just notice something.</p>
+    </form>
+    <div class="progress"><span id="progress">Level 1 · 0 XP</span><span>Attention is the achievement.</span></div>
+    <details><summary>Your data &amp; this demo</summary><p id="privacy"></p><p>Reflections are self-reported; AI cannot prove you went outside. The timer is a suggestion, and you can always stop. Avoid roads, private property, unfamiliar routes, severe weather, and touching unknown plants. Stop whenever you need to.</p><p>Your session and draft note are stored in this browser. Don't include addresses or sensitive details in reflections. Voice uses the configured app server, never your browser's cloud dictation.</p><button id="export" class="secondary" type="button">Export my progress</button> <button id="erase" class="secondary" type="button">Delete my data</button></details>
+  </section>
+  <section id="offer" hidden>
+    <div class="eyebrow">YOUR SMALL ADVENTURE</div><h1 id="questTitle"></h1><p class="lead" id="questTask"></p>
+    <p id="questDuration"></p><p class="small">Choose a familiar, safe outdoor place. Leave plants and wildlife undisturbed.</p>
+    <button id="accept">Accept &amp; enter Zen Mode ↗</button><button id="discard" class="secondary">Try another mission</button>
+  </section>
+  <section id="zen" hidden aria-labelledby="zenTitle">
+    <span class="zen-leaf" aria-hidden="true">✳</span><h1 id="zenTitle">Go find your moment.</h1>
+    <div id="timer" role="timer" aria-label="Suggested time remaining">05:00</div>
+    <p>You can lock your phone now.<br>This timer resumes when you return.</p>
+    <button id="return" class="secondary">I'm back · write my field note</button>
+    <p class="small">No alarm or background tracking. Return whenever you're ready.</p>
+  </section>
+  <section id="reflection" hidden>
+    <div class="eyebrow">WELCOME BACK</div><h1>What did you notice?</h1><p class="lead">A small detail is enough. You don't have to feel different.</p>
+    <form id="reflectionForm" class="card">
+      <label for="note">Your field note</label><textarea id="note" rows="5" maxlength="2000" required placeholder="The leaves had rounded edges, but one was shaped like a little spear. I heard a bird I usually miss."></textarea>
+      <div id="voiceTools" hidden><p class="small">Optional: record up to 60 seconds. Audio goes to this app's backend for Whisper transcription and is not saved. Review the transcript before submitting.</p><button id="record" type="button" class="secondary">Record voice note</button></div>
+      <button id="submit" type="submit">Complete my quest ↗</button><button id="abandon" type="button" class="secondary">End without XP</button>
+      <p class="small">Your note stays as a local draft until the server confirms completion. Reopen this page and press Submit to retry after reconnecting.</p>
+    </form>
+  </section>
+  <section id="result" hidden><div class="eyebrow">A LITTLE MORE PRESENT</div><h1 id="award"></h1><p class="lead" id="feedback"></p><p id="level"></p><button id="done">Enough screen for now ↗</button><p class="small">No streak to protect. Come back when a little nudge would help.</p></section>
+  <footer id="footer"><span>#HuntingForHappiness</span><span>Powered by open weights. Inspired by the outside.</span></footer>
+</main>
+</body></html>

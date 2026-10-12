@@ -1,0 +1,8 @@
+{
+  "name": "hunting-for-happiness-ui-tests",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Optional DOM smoke tests; the app needs no Node build step",
+  "scripts": {"test:ui": "node tests/ui_smoke.cjs"},
+  "devDependencies": {"jsdom": "30.1.2"}
+}
